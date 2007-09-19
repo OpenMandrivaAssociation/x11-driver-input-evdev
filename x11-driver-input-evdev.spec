@@ -1,6 +1,6 @@
 Name: x11-driver-input-evdev
 Version: 1.1.5
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
 URL: http://xorg.freedesktop.org
@@ -9,6 +9,7 @@ License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
 Patch1: xf86-input-evdev-1.1.2-have-HWheelRelativeAxisButtons-7-6-by-default.patch
 Patch2: xf86-input-evdev-1.1.2-skip-HWheelRelativeAxisButtons-even-if-unused.patch
+Patch3: 0003-FixDuplicateArrayEntry-KeyPressedBitTests-XkbDefaults.patch
 
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-server-devel >= 1.0.1
@@ -25,6 +26,7 @@ including most mice and keyboards.
 %setup -q -n xf86-input-evdev-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1 -b .DuplicateEntry-Bits-Kxb
 
 %build
 %configure2_5x	--x-includes=%{_includedir}\
