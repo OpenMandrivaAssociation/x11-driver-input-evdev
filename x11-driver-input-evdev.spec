@@ -1,6 +1,6 @@
 Name: x11-driver-input-evdev
 Version: 1.1.5
-Release: %mkrel 2
+Release: %mkrel 3
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
 URL: http://xorg.freedesktop.org
@@ -15,7 +15,7 @@ BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-server-devel >= 1.0.1
 BuildRequires: x11-util-macros >= 1.0.1
 
-Conflicts: xorg-x11-server < 7.0
+Conflicts: x11-server <= 1.4
 
 %description
 Evdev is an Xorg input driver for Linux's generic event devices.
@@ -29,9 +29,7 @@ including most mice and keyboards.
 %patch3 -p1 -b .DuplicateEntry-Bits-Kxb
 
 %build
-%configure2_5x	--x-includes=%{_includedir}\
-		--x-libraries=%{_libdir}
-
+%configure2_5x
 %make
 
 %install
@@ -46,5 +44,4 @@ rm -rf %{buildroot}
 %{_libdir}/xorg/modules/input/evdev_drv.la
 %{_libdir}/xorg/modules/input/evdev_drv.so
 %{_mandir}/man4/evdev.*
-
 
