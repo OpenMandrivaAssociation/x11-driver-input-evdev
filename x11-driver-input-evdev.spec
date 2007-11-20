@@ -5,6 +5,15 @@ Summary: X.org input driver for Linux generic event devices
 Group: System/X11
 URL: http://xorg.freedesktop.org
 Source: http://xorg.freedesktop.org/releases/individual/driver/xf86-input-evdev-%{version}.tar.bz2
+
+# ensure:
+# - button 6 is "Wheel Left"
+# - button 7 is "Wheel Right"
+# - button 8 is BTN_SIDE
+# - button 9 is BTN_EXTRA
+# by skipping buttons 6&7 if the mouse doesn't have a hwheel
+Patch0: xf86-input-evdev-1.2.0-ensure-buttons-6-7-are-HWheel.patch
+
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
 
@@ -21,6 +30,7 @@ including most mice and keyboards.
 
 %prep
 %setup -q -n xf86-input-evdev-%{version}
+%patch0 -p1
 
 %build
 %configure
