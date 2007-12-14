@@ -1,18 +1,21 @@
 Name: x11-driver-input-evdev
 Version: 1.2.0
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
-URL: http://xorg.freedesktop.org
-Source: http://xorg.freedesktop.org/releases/individual/driver/xf86-input-evdev-%{version}.tar.bz2
 
-# ensure:
-# - button 6 is "Wheel Left"
-# - button 7 is "Wheel Right"
-# - button 8 is BTN_SIDE
-# - button 9 is BTN_EXTRA
-# by skipping buttons 6&7 if the mouse doesn't have a hwheel
-Patch0: xf86-input-evdev-1.2.0-ensure-buttons-6-7-are-HWheel.patch
+########################################################################
+# git clone git//git.mandriva.com/people/pcpa/xorg/drivers/xf86-input-evdev  xorg/drivers/xf86-input-evdev
+# cd xorg/drivers/xf86-input/evdev
+# git-archive --format=tar --prefix=xf86-input-evdev-1.2.0/ master | bzip2 -9 > xf86-input-evdev-1.2.0.tar.bz2
+########################################################################
+Source0: xf86-input-evdev-%{version}.tar.bz2
+
+########################################################################
+# git-format-patch master..origin/mandriva+gpl
+Patch1: 0001-Update-for-new-policy-of-hidden-symbols-and-common-m.patch
+Patch2: 0002-Ensure-buttons-6-and-7-are-HWheel.patch
+########################################################################
 
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
@@ -30,9 +33,12 @@ including most mice and keyboards.
 
 %prep
 %setup -q -n xf86-input-evdev-%{version}
-%patch0 -p1
+
+%patch1 -p1
+%patch2 -p1
 
 %build
+autoreconf -ifs
 %configure
 %make
 
