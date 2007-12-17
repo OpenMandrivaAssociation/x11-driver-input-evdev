@@ -18,7 +18,6 @@ Patch2: 0002-Ensure-buttons-6-and-7-are-HWheel.patch
 ########################################################################
 
 License: MIT
-BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-server-devel >= 1.0.1
