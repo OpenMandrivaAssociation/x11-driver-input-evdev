@@ -1,3 +1,5 @@
+%define debug_package	%{nil}
+
 Name: x11-driver-input-evdev
 Version: 1.2.0
 Release: %mkrel 2
@@ -14,11 +16,15 @@ Source0: xf86-input-evdev-%{version}.tar.bz2
 # git-format-patch xf86-input-evdev-1.2.0..origin/mandriva+gpl
 Patch1: 0001-Update-for-new-policy-of-hidden-symbols-and-common-m.patch
 Patch2: 0002-Ensure-buttons-6-and-7-are-HWheel.patch
+Patch3: 0003-Don-t-flush-buttons-on-init-bug-12630.patch
 ########################################################################
 License: MIT
-BuildRequires: x11-proto-devel >= 1.0.0
-BuildRequires: x11-server-devel >= 1.0.1
-BuildRequires: x11-util-macros >= 1.1.5-4mdk
+BuildRequires: x11-util-macros		>= 1.1.5-4mdk
+#BuildRequires: gcc			>= 4.2.2
+#BuildRequires: glibc-devel		>= 2.7
+BuildRequires: libpixman-1-devel	>= 0.9.6
+BuildRequires: x11-proto-devel		>= 7.3
+BuildRequires: x11-server-devel		>= 1.4
 Conflicts: x11-server < 1.4
 
 %description
@@ -31,6 +37,7 @@ including most mice and keyboards.
 
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 autoreconf -ifs
