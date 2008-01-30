@@ -1,26 +1,29 @@
 Name: x11-driver-input-evdev
 Version: 1.2.0
-Release: %mkrel 3
+Release: %mkrel 4
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
 URL: http://xorg.freedesktop.org
-########################################################################
-# git clone git://git.mandriva.com/people/pcpa/xorg/drivers/xf86-input-evdev xorg/drivers/xf86-input-evdev
-# cd xorg/drivers/xf86-input/evdev
-# git-archive --format=tar --prefix=xf86-input-evdev-1.2.0/ xf86-input-evdev-1.2.0 | bzip2 -9 > xf86-input-evdev-1.2.0.tar.bz2
-########################################################################
-Source0: xf86-input-evdev-%{version}.tar.bz2
-########################################################################
-# git-format-patch xf86-input-evdev-1.2.0..origin/mandriva+gpl
-Patch1: 0001-Update-for-new-policy-of-hidden-symbols-and-common-m.patch
-Patch2: 0002-Ensure-buttons-6-and-7-are-HWheel.patch
-Patch3: 0003-Don-t-flush-buttons-on-init-bug-12630.patch
-########################################################################
+Source: http://xorg.freedesktop.org/releases/individual/driver/xf86-input-evdev-%{version}.tar.bz2
+
+Patch1: 0001-Don-t-flush-buttons-on-init-bug-12630.patch
+Patch2: 0002-Initialise-b_map_data-to-correct-size.-Bug-13991.patch
+
+# ensure:
+# - button 6 is "Wheel Left"
+# - button 7 is "Wheel Right"
+# - button 8 is BTN_SIDE
+# - button 9 is BTN_EXTRA
+# by skipping buttons 6&7 if the mouse doesn't have a hwheel
+Patch3: 0003-Ensure-buttons-6-and-7-are-HWheel.patch
+
 License: MIT
-BuildRequires: x11-util-macros		>= 1.1.5-4mdk
-BuildRequires: libpixman-1-devel	>= 0.9.6
-BuildRequires: x11-proto-devel		>= 7.3
-BuildRequires: x11-server-devel		>= 1.4
+BuildRoot: %{_tmppath}/%{name}-root
+
+BuildRequires: x11-proto-devel >= 1.0.0
+BuildRequires: x11-server-devel >= 1.0.1
+BuildRequires: x11-util-macros >= 1.0.1
+
 Conflicts: x11-server < 1.4
 
 %description
@@ -36,19 +39,18 @@ including most mice and keyboards.
 %patch3 -p1
 
 %build
-autoreconf -ifs
 %configure
 %make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-rm -f %{buildroot}/%{_libdir}/xorg/modules/input/*.la
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
+%{_libdir}/xorg/modules/input/evdev_drv.la
 %{_libdir}/xorg/modules/input/evdev_drv.so
 %{_mandir}/man4/evdev.*
