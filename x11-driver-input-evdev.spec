@@ -1,6 +1,6 @@
 Name: x11-driver-input-evdev
 Version: 1.2.0
-Release: %mkrel 4
+Release: %mkrel 5
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
 URL: http://xorg.freedesktop.org
@@ -16,6 +16,8 @@ Patch2: 0002-Initialise-b_map_data-to-correct-size.-Bug-13991.patch
 # - button 9 is BTN_EXTRA
 # by skipping buttons 6&7 if the mouse doesn't have a hwheel
 Patch3: 0003-Ensure-buttons-6-and-7-are-HWheel.patch
+
+Patch4: 0004-More-accurate-error-messages-on-device-open-fail.patch
 
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
@@ -37,6 +39,7 @@ including most mice and keyboards.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %configure
