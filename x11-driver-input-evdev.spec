@@ -1,10 +1,11 @@
 Name: x11-driver-input-evdev
 Version: 1.99.4
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
 URL: http://xorg.freedesktop.org
 Source: xf86-input-evdev-%{version}.tar.bz2
+Patch0: 0001-Finalize-MB-emulation-if-EvdevProbe-fails.patch
 
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
@@ -22,6 +23,7 @@ including most mice and keyboards.
 
 %prep
 %setup -q -n xf86-input-evdev-%{version}
+%patch0 -p1
 
 %build
 autoreconf # <- needed for DRIVER_MAN_SUFFIX
