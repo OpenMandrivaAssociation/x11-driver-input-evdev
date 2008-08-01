@@ -1,5 +1,5 @@
 Name: x11-driver-input-evdev
-Version: 2.0.2
+Version: 2.0.3
 Release: %mkrel 1
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
