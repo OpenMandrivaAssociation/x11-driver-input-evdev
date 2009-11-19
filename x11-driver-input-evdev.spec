@@ -1,10 +1,12 @@
 Name: x11-driver-input-evdev
 Version: 2.3.0
-Release: %mkrel 2
+Release: %mkrel 3
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
 URL: http://xorg.freedesktop.org
 Source: xf86-input-evdev-%{version}.tar.bz2
+# should fix #55540, applied upstream
+Patch1: xf86-input-evdev-2.3.0-set-valuators-relative-motion-evs.patch
 
 License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
@@ -31,6 +33,7 @@ Development files for %{name}
 
 %prep
 %setup -q -n xf86-input-evdev-%{version}
+%patch1 -p1
 
 %build
 %configure2_5x
