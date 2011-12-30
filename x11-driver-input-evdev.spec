@@ -1,13 +1,11 @@
 Name: x11-driver-input-evdev
 Version: 2.6.0
-Release: %mkrel 4
+Release: 5
 Summary: X.org input driver for Linux generic event devices
 Group: System/X11
+License: MIT
 URL: http://xorg.freedesktop.org
 Source: xf86-input-evdev-%{version}.tar.bz2
-
-License: MIT
-BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-server-devel >= 1.0.1
@@ -33,7 +31,7 @@ License: MIT
 Development files for %{name}
 
 %prep
-%setup -q -n xf86-input-evdev-%{version}
+%setup -qn xf86-input-evdev-%{version}
 %apply_patches
 
 %build
@@ -43,16 +41,13 @@ Development files for %{name}
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%clean
-rm -rf %{buildroot}
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %files
-%defattr(-,root,root)
-%{_libdir}/xorg/modules/input/evdev_drv.la
 %{_libdir}/xorg/modules/input/evdev_drv.so
 %{_mandir}/man4/evdev.*
 
 %files devel
 %{_includedir}/xorg/evdev-properties.h
 %{_libdir}/pkgconfig/xorg-evdev.pc
+
