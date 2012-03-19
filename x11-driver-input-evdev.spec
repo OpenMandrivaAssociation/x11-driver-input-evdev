@@ -10,6 +10,7 @@ Source0: http://cgit.freedesktop.org/xorg/driver/xf86-input-evdev/snapshot/xf86-
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-server-devel >= 1.0.1
 BuildRequires: x11-util-macros >= 1.0.1
+BuildRequires: pkgconfig(libudev)
 Requires: x11-server-common %(xserver-sdk-abi-requires xinput)
 
 Conflicts: x11-server < 1.4
