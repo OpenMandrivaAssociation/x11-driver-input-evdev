@@ -12,7 +12,8 @@ BuildRequires:	x11-server-devel >= 1.12
 BuildRequires:	x11-util-macros >= 1.0.1
 BuildRequires:	pkgconfig(dri)
 %if %mdvver >= 201200
-BuildRequires: pkgconfig(udev) >= 186
+BuildRequires:	pkgconfig(udev) >= 186
+Requires:		udev
 %else
 BuildRequires: pkgconfig(udev)
 %endif
