@@ -6,27 +6,24 @@ Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
 Source0:	ftp://ftp.x.org/pub/individual/driver/xf86-input-evdev-%{version}.tar.bz2
-Source1: 11-evdev-trackpoint.conf
+Source1:	11-evdev-trackpoint.conf
 BuildRequires:	x11-proto-devel >= 1.0.0
 BuildRequires:	x11-server-devel >= 1.12
 BuildRequires:	x11-util-macros >= 1.0.1
 BuildRequires:	pkgconfig(dri)
-%if %mdvver >= 201200
 BuildRequires:	pkgconfig(udev) >= 186
-Requires:		udev
-%else
-BuildRequires: pkgconfig(udev)
-%endif
 Requires:	x11-server-common %(xserver-sdk-abi-requires xinput)
 Conflicts:	x11-server < 1.4
 Obsoletes:	imwheel
+%rename		evdev
+
 
 %description
 Evdev is an Xorg input driver for Linux's generic event devices.
 It therefore supports all input devices that the kernel knows about,
 including most mice and keyboards.
 
-%package devel
+%package	devel
 Summary:	Development files for %{name}
 Group:		Development/X11
 
@@ -35,6 +32,7 @@ Development files for %{name}.
 
 %prep
 %setup -qn xf86-input-evdev-%{version}
+autoreconf -fi
 
 %build
 %configure2_5x
