@@ -1,5 +1,5 @@
 Name:		x11-driver-input-evdev
-Version:	2.8.0
+Version:	2.8.1
 Release:	1
 Summary:	X.org input driver for Linux generic event devices
 Group:		System/X11
@@ -16,7 +16,6 @@ Requires:	x11-server-common %(xserver-sdk-abi-requires xinput)
 Conflicts:	x11-server < 1.4
 Obsoletes:	imwheel
 %rename		evdev
-
 
 %description
 Evdev is an Xorg input driver for Linux's generic event devices.
