@@ -12,6 +12,7 @@ BuildRequires:	x11-server-devel >= 1.12
 BuildRequires:	x11-util-macros >= 1.0.1
 BuildRequires:	pkgconfig(dri)
 BuildRequires:	pkgconfig(udev) >= 186
+BuildRequires:	pkgconfig(libevdev)
 Requires:	x11-server-common %(xserver-sdk-abi-requires xinput)
 Conflicts:	x11-server < 1.4
 Obsoletes:	imwheel
