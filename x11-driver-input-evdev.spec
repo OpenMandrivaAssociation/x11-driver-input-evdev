@@ -1,6 +1,6 @@
 Name:		x11-driver-input-evdev
-Version:	2.9.0
-Release:	5
+Version:	2.9.1
+Release:	1
 Summary:	X.org input driver for Linux generic event devices
 Group:		System/X11
 License:	MIT
@@ -23,7 +23,7 @@ Evdev is an Xorg input driver for Linux's generic event devices.
 It therefore supports all input devices that the kernel knows about,
 including most mice and keyboards.
 
-%package	devel
+%package devel
 Summary:	Development files for %{name}
 Group:		Development/X11
 
