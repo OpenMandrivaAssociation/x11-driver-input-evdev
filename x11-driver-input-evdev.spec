@@ -1,6 +1,6 @@
 Name:		x11-driver-input-evdev
 Version:	2.9.1
-Release:	1
+Release:	2
 Summary:	X.org input driver for Linux generic event devices
 Group:		System/X11
 License:	MIT
@@ -13,6 +13,7 @@ BuildRequires:	x11-util-macros >= 1.0.1
 BuildRequires:	pkgconfig(dri)
 BuildRequires:	pkgconfig(udev) >= 186
 BuildRequires:	pkgconfig(libevdev)
+BuildRequires:	pkgconfig(mtdev)
 Requires:	x11-server-common %(xserver-sdk-abi-requires xinput)
 Conflicts:	x11-server < 1.4
 Obsoletes:	imwheel
