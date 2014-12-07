@@ -1,6 +1,6 @@
 Name:		x11-driver-input-evdev
 Version:	2.9.1
-Release:	2
+Release:	3
 Summary:	X.org input driver for Linux generic event devices
 Group:		System/X11
 License:	MIT
