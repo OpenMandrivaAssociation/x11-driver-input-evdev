@@ -1,6 +1,6 @@
 Name:		x11-driver-input-evdev
 Version:	2.9.1
-Release:	3
+Release:	4
 Summary:	X.org input driver for Linux generic event devices
 Group:		System/X11
 License:	MIT
@@ -24,16 +24,15 @@ Evdev is an Xorg input driver for Linux's generic event devices.
 It therefore supports all input devices that the kernel knows about,
 including most mice and keyboards.
 
-%package devel
+%package	devel
 Summary:	Development files for %{name}
 Group:		Development/X11
 
-%description devel
+%description	devel
 Development files for %{name}.
 
 %prep
 %setup -qn xf86-input-evdev-%{version}
-autoreconf -fi
 
 %build
 %configure
@@ -41,11 +40,9 @@ autoreconf -fi
 
 %install
 %makeinstall_std
-find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 # Add scrolling support for TrackPoint and similar devices
-mkdir -p %{buildroot}%{_datadir}/X11/xorg.conf.d/
-install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/
+install -m644 %{SOURCE1} -D %{buildroot}%{_datadir}/X11/xorg.conf.d/11-evdev-trackpoint.conf
 
 %files
 %{_libdir}/xorg/modules/input/evdev_drv.so
