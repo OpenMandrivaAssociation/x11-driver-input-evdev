@@ -18,7 +18,7 @@ Requires:	x11-server-common %(xserver-sdk-abi-requires xinput)
 Conflicts:	x11-server < 1.4
 Obsoletes:	imwheel
 %rename		evdev
-%reame		x11-driver-video-keyboard
+%rename		x11-driver-input-keyboard
 
 %description
 Evdev is an Xorg input driver for Linux's generic event devices.
