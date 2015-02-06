@@ -36,6 +36,8 @@ Development files for %{name}.
 %setup -qn xf86-input-evdev-%{version}
 
 %build
+%define _disable_ld_no_undefined 1
+
 %configure
 %make
 
