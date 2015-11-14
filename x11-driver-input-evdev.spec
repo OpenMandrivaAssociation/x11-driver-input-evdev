@@ -50,7 +50,7 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_datadir}/X11/xorg.conf.d/11-evdev-tra
 %files
 %{_libdir}/xorg/modules/input/evdev_drv.so
 %{_mandir}/man4/evdev.*
-%{_datadir}/X11/xorg.conf.d/11-evdev-trackpoint.conf
+%{_datadir}/X11/xorg.conf.d/*.conf
 
 %files devel
 %{_includedir}/xorg/evdev-properties.h
