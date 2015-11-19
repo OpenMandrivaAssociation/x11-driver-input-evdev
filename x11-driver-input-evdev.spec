@@ -8,7 +8,7 @@ URL:		http://xorg.freedesktop.org
 Source0:	ftp://ftp.x.org/pub/individual/driver/xf86-input-evdev-%{version}.tar.bz2
 Source1:	11-evdev-trackpoint.conf
 BuildRequires:	x11-proto-devel >= 1.0.0
-BuildRequires:	x11-server-devel >= 1.12
+BuildRequires:	x11-server-devel >= 1.18
 BuildRequires:	x11-util-macros >= 1.0.1
 BuildRequires:	pkgconfig(dri)
 BuildRequires:	pkgconfig(udev) >= 186
