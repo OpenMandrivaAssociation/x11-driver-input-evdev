@@ -1,11 +1,11 @@
 Name:		x11-driver-input-evdev
-Version:	2.10.5
+Version:	2.10.6
 Release:	1
 Summary:	X.org input driver for Linux generic event devices
 Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
-Source0:	ftp://ftp.x.org/pub/individual/driver/xf86-input-evdev-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-evdev-%{version}.tar.bz2
 Source1:	11-evdev-trackpoint.conf
 BuildRequires:	x11-proto-devel >= 1.0.0
 BuildRequires:	x11-server-devel >= 1.18
