@@ -1,6 +1,6 @@
 Name:		x11-driver-input-evdev
 Version:	2.10.6
-Release:	2
+Release:	4
 Summary:	X.org input driver for Linux generic event devices
 Group:		System/X11
 License:	MIT
@@ -33,16 +33,16 @@ Group:		Development/X11
 Development files for %{name}.
 
 %prep
-%setup -qn xf86-input-evdev-%{version}
+%autosetup -n xf86-input-evdev-%{version} -p1
 
 %build
 %define _disable_ld_no_undefined 1
 
 %configure
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # Add scrolling support for TrackPoint and similar devices
 install -m644 %{SOURCE1} -D %{buildroot}%{_datadir}/X11/xorg.conf.d/11-evdev-trackpoint.conf
