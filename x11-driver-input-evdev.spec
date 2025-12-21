@@ -7,6 +7,11 @@ License:	MIT
 URL:		https://xorg.freedesktop.org
 Source0:	https://xorg.freedesktop.org/releases/individual/driver/xf86-input-evdev-%{version}.tar.xz
 Source1:	11-evdev-trackpoint.conf
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	x11-proto-devel >= 1.0.0
 BuildRequires:	x11-server-devel >= 1.18
 BuildRequires:	x11-util-macros >= 1.0.1
